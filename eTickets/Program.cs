@@ -33,4 +33,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+AppDbInitializer.Seed(app);
+//used to call the seed method to populate the database with testdata
+
 app.Run();
