@@ -1,19 +1,21 @@
 ﻿using eTickets.Data;
+using eTickets.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eTickets.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext _context;
-        public ActorsController(AppDbContext context)
+        public readonly IActorsService _service;
+
+        public ActorsController(IActorsService service)
         {
-            _context = context;
+            _service = service;
         }
     
         public IActionResult Index()//This action result name needs to be the same as the name of the cshtml file
         {
-            var allActors = _context.Actors.ToList();
+            var allActors = _service.GetAll();
             return View(allActors);
         }
     }
