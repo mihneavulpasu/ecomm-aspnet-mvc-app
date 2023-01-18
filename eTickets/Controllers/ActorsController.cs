@@ -18,5 +18,10 @@ namespace eTickets.Controllers
             var allActors = _service.GetAll();
             return View(allActors);
         }
+
+        public IActionResult Create() //Simple Get request at Actors/Create
+        { 
+            return View();
+        }
     }
 }
