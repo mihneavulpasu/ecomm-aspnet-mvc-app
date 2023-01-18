@@ -13,7 +13,7 @@ namespace eTickets.Controllers
         public IActionResult Index() //public async Task<IActionResult> Index()
         {
             var allCinemas = _context.Cinemas.ToList(); //var allCinemas = await _context.Cinemas.ToListAsync();
-            return View();
+            return View(allCinemas);
         }
     }
 }

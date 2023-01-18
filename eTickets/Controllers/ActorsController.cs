@@ -11,10 +11,10 @@ namespace eTickets.Controllers
             _context = context;
         }
     
-        public IActionResult Index()
+        public IActionResult Index()//This action result name needs to be the same as the name of the cshtml file
         {
             var allActors = _context.Actors.ToList();
-            return View();
+            return View(allActors);
         }
     }
 }
