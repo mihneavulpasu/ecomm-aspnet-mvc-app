@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 // UseSqlServer(the connection string from JSON file)
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("HomeConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SQL2016"));
 });
 
 //Services configuration
