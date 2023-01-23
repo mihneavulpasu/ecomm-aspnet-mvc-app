@@ -42,14 +42,14 @@
                             @Html.DisplayFor(modelItem => item.FullName)
                         </td>
 
-                        <td>
+                        <td style="max-width: 300px">
                             @Html.DisplayFor(modelItem => item.Bio)
                         </td>
 
                         <td>
-                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>  |
-                            <a class="btn btn-outline-info"><i class="bi bi-eye-fill"></i>Details</a> |
-                            <a class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id" ><i class="bi bi-pencil-square"></i>Edit</a>  |
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-eye-fill"  ></i>Details</a> | @* we have the action and route for the details button *@
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id" ><i class="bi bi-trash"></i>Delete</a> @* we also dont need the asp-controller because we are in the same folder *@
                         </td>
                     </tr>
                 }

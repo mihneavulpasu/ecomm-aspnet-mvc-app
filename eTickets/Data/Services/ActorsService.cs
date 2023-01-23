@@ -1,4 +1,5 @@
 ﻿using eTickets.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Data.Services
 {
@@ -13,12 +14,15 @@ namespace eTickets.Data.Services
 
         public void Add(Actor actor)
         {
-            throw new NotImplementedException();
+            _context.Actors.Add(actor);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = _context.Actors.FirstOrDefault(x => x.Id == id);
+            _context.Actors.Remove(result);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Actor> GetAll()
@@ -29,12 +33,15 @@ namespace eTickets.Data.Services
 
         public Actor GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = _context.Actors.FirstOrDefault(x => x.Id == id);
+            return result;
         }
 
         public Actor Update(int id, Actor newActor)
         {
-            throw new NotImplementedException();
+            _context.Actors.Update(newActor);
+            _context.SaveChanges();
+            return newActor;
         }
     }
 }
