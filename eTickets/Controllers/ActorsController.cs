@@ -23,6 +23,21 @@ namespace eTickets.Controllers
         }
 
 
+        //Get request at: Actors/Details/id
+        public IActionResult Details(int id)
+        {
+            var actorDetails = _service.GetById(id);
+
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(actorDetails);
+        }
+
+
+
+
 
 
         //Get request at: Actors/Create
@@ -41,21 +56,6 @@ namespace eTickets.Controllers
             }
             _service.Add(actor); //after writing this we go to Data -> Services -> ActorsService -> add method
             return RedirectToAction("Index");
-        }
-
-
-
-
-        //Get request at: Actors/Details/id
-        public IActionResult Details(int id)
-        {
-            var actorDetails = _service.GetById(id);
-
-            if (actorDetails == null)
-            {
-                return View("NotFound");
-            }
-            return View(actorDetails);
         }
 
 
