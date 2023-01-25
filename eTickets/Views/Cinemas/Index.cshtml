@@ -47,8 +47,9 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>  |
-                            <a class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>  |
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id" ><i class="bi bi-eye-fill"  ></i>Details</a> |
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
                         </td>
                     </tr>
                 }
@@ -56,4 +57,9 @@
         </table>
 
     </div>
+</div>
+<div style="position: fixed; right: 30px; bottom: 60px;" class="text-white">
+    <a asp-controller="Cinemas" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Add New
+    </a>
 </div>

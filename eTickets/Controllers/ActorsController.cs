@@ -14,31 +14,11 @@ namespace eTickets.Controllers
             _service = service;
         }
 
-
-
         public IActionResult Index()//This action result name needs to be the same as the name of the cshtml file
         {
             var allActors = _service.GetAll();
             return View(allActors);
         }
-
-
-        //Get request at: Actors/Details/id
-        public IActionResult Details(int id)
-        {
-            var actorDetails = _service.GetById(id);
-
-            if (actorDetails == null)
-            {
-                return View("NotFound");
-            }
-            return View(actorDetails);
-        }
-
-
-
-
-
 
         //Get request at: Actors/Create
         public IActionResult Create()
@@ -58,9 +38,17 @@ namespace eTickets.Controllers
             return RedirectToAction("Index");
         }
 
+        //Get request at: Actors/Details/id
+        public IActionResult Details(int id)
+        {
+            var actorDetails = _service.GetById(id);
 
-
-
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(actorDetails);
+        }
 
         //Get request at: Actors/Edit
         public IActionResult Edit(int id)
@@ -84,9 +72,6 @@ namespace eTickets.Controllers
             _service.Update(id, actor); //after writing this we go to Data -> Services -> ActorsService -> add method
             return RedirectToAction("Index");
         }
-
-
-
 
         //Get request at: Actors/Delete/Id
         public IActionResult Delete(int id)

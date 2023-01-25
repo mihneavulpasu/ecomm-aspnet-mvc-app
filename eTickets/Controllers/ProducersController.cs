@@ -14,17 +14,28 @@ namespace eTickets.Controllers
             _service = service;
         }
 
-
-
-
         public IActionResult Index() //public async Task<IActionResult> Index()
         {
             var allProducers = _service.GetAll(); //var allProducers = await _context.Producers.ToListAsync();
             return View(allProducers); //in the View we need to define the name of the view but if we leave index no need to specify cause it is default
         }
+        //NUMERO JUAN
+        //GET: producers/create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-
-
+        [HttpPost]
+        public IActionResult Create([Bind("ProfilePictureUrl, FullName, Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+            _service.Add(producer);
+            return RedirectToAction("Index");
+        }
 
         //GET: producers/Details/id
         public IActionResult Details(int id) 
@@ -36,27 +47,6 @@ namespace eTickets.Controllers
             }
             return View(producerDetails); 
         }
-
-
-
-        //GET: producers/create
-        public IActionResult  Create() 
-        { 
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create([Bind("ProfilePictureUrl, FullName, Bio")]Producer producer) 
-        {
-            if (!ModelState.IsValid) 
-            {
-                return View(producer);
-            }
-            _service.Add(producer);
-            return RedirectToAction("Index");
-        }
-
-
 
         //GET: producers/edit/id
         public IActionResult Edit(int id)
@@ -85,8 +75,6 @@ namespace eTickets.Controllers
            //return View(producer);
            //idk why he wrote it like this it works fine i guess without it as the actors work the same :P
         }
-
-
 
         //GET: producers/delete/id
         public IActionResult Delete(int id)
