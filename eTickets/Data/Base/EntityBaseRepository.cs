@@ -1,6 +1,7 @@
 ﻿using eTickets.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace eTickets.Data.Base
 {
@@ -31,6 +32,14 @@ namespace eTickets.Data.Base
         {
             var result = _context.Set<T>().ToList();
             return result;
+        }
+
+        public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
+        {
+            //ce mortii ma t  ii faci aici
+            IQueryable<T> query = _context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            return query.ToList();
         }
 
         public T GetById(int id)

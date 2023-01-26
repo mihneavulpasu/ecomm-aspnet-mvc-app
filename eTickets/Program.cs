@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews();
 // UseSqlServer(the connection string from JSON file)
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("HomeConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SQL2016"));
 });
 
 
@@ -23,6 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 
 var app = builder.Build();
 
