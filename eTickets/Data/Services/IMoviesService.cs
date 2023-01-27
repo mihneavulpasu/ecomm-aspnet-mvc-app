@@ -5,6 +5,6 @@ namespace eTickets.Data.Services
 {
     public interface IMoviesService : IEntityBaseRepository<Movie> //also inherit in the movie model to remove error
     {
-        Task<Movie> GetMovieById(int id);
+        Task<Movie> GetMovieByIdAsync(int id);
     }
 }
