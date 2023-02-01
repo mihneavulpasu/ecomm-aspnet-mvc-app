@@ -6,9 +6,12 @@ namespace eTickets.Data.Base
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()  //add new item interface (this is an interface)
     {
         IEnumerable<T> GetAll(); //copy pasted everything here from IActorsService 
-                                    //used to get all actors from the database  ___ strucutured like this -> return type, method name, and parameters if we have
-        
-        
+                                 //used to get all actors from the database  ___ strucutured like this -> return type, method name, and parameters if we have
+
+
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties);
+
         IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties);
         //func has 2 parameters (the entity type) and an object, we also pass multiple parameters so its 
         //an array.
