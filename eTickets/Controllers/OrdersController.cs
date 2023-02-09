@@ -18,7 +18,7 @@ namespace eTickets.Controllers
             _shoppingCart = shoppingCart;
         }
 
-        public IActionResult Index()
+        public IActionResult ShoppingCart()
         {
             //use this to get all the items and show them in the view
             var items = _shoppingCart.GetShoppingCartItems();

@@ -20,6 +20,21 @@ namespace eTickets.Data.Cart
         }
 
 
+        //configuring sessions & shopping cart service 
+        public static ShoppingCart GetShoppingCart(IServiceProvider services) //we use static bcause we use it in startup.cs
+        {
+            ISession? session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = services.GetService<AppDbContext>();
+
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            session.SetString("CartId", cartId);
+
+            return new ShoppingCart(context) { ShoppingCartId= cartId };
+        }
+
+
+
+
         public void AddItemToCart(Movie movie)
         {
             var shoppingCartItem = _context.ShoppingCartItems.FirstOrDefault(n => n.Movie.Id == movie.Id && n.ShoppingCartId == ShoppingCartId);
