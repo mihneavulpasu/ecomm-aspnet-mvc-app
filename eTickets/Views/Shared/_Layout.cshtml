@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/eTickets.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    
+
 </head>
 <body>
     <header>
@@ -25,19 +25,19 @@
                             <a class="nav-link text-dark" asp-controller="Movies" asp-action="Index">
                                 <i class="badge-info bi-film"></i>Movies
                             </a>
-                       </li>
+                        </li>
 
-                       <li class="nav-item dropdown">
-                           <a class="nav-link text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear"></i>Management
-                           </a>
-                           
-                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                               <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
-                               <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
-                               <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
-                           </div>
-                       </li>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
+                                <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
+                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
+                            </div>
+                        </li>
                     </ul>
                     <form class="" asp-controller="Movies" asp-action="Filter" style="width: 50%;">
                         <div class="row">
@@ -53,6 +53,20 @@
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
+
+                    @*User profile section*@
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" href="#" role="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-badge"></i> Hello User
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="profile-btn">
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index"><i class="bi bi-list"></i> Orders</a>
+                            </div>
+                        </li>
+                    </ul>
+
 
                 </div>
             </div>
